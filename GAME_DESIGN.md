@@ -31,10 +31,11 @@ beliren barbar kamplarına saldır → XP ve puan topla.
   8. Elmas çekiç
 - Bir malzemenin 10 kademesi bitince bir sonraki malzemeye geçilir ve oradan devam edilir.
 - **Kazma**, çekicin üst versiyonudur: aynı 8 malzeme ve her biri 10 kademe, çekiç zincirinden sonra gelir.
-- Toplam: çekiç 80 + kazma 80 = **160 yükseltme basamağı** (doğrulanacak).
+- Toplam: çekiç 80 + kazma 80 = **160 yükseltme basamağı**. Kazma, çekiç zincirinin devamıdır (81. basamaktan başlar), ayrı bir kol değil.
 
 ### Kritik
-- Belirli ihtimalle o anki tıklama gelirinin **5 katı**. İhtimal: belirlenecek.
+- Belirli ihtimalle o anki tıklama gelirinin **5 katı**. **Yükseltmeyle artmaz** (sabit).
+- Sabit ihtimal değeri: belirlenecek.
 
 ### Combo
 - **5 saniye içinde 20 tıklama** yapılınca combo tetiklenir; tıklama geliri **×1,15**.
@@ -44,6 +45,16 @@ beliren barbar kamplarına saldır → XP ve puan topla.
 - Savaş sonunda ganimet olarak düşer; oyuncu istediği zaman kullanır.
 - Örnekler: 30 sn boyunca 2x tıklama geliri, 60 sn boyunca 2x sabit gelir.
 
-## Sabit gelir (saniye başına) — henüz konuşulmadı
+## Sabit gelir (saniye başına)
+Binalar para ile yükseltilir, her kademe saniyelik geliri artırır. Binalar:
+1. Taş madeni
+2. Altın madeni
+3. Zümrüt madeni
+4. Elmas madeni
+5. Tüccar pazarı
+
+Kademe sayısı: her bina 10 kademe; **tüccar pazarı için "40 kademe" yazıldı, netleşecek**
+(tüccar pazarı 40 kademe mi, yoksa dört madenin toplamı mı 40).
+Binaların kilit açma sırası ve fiyat/gelir değerleri: konuşulmadı.
 ## Offline gelir — fikirler konuşuldu, karar bekliyor
 ## Savaş ve harita — henüz konuşulmadı

@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../services/session.dart';
 import '../services/update_service.dart';
+import 'reports_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -69,6 +70,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
           leading: const Icon(Icons.person),
           title: const Text('Kullanıcı adı'),
           subtitle: Text(Session.username ?? ''),
+        ),
+        ListTile(
+          leading: const Icon(Icons.description),
+          title: const Text('Raporlar'),
+          onTap: () => Navigator.push(
+              context, MaterialPageRoute(builder: (_) => const ReportsScreen())),
         ),
         ListTile(
           leading: const Icon(Icons.info_outline),

@@ -213,3 +213,9 @@ Askeri güç (casusluk için) = toplam saldırı gücü + toplam savunma gücü.
   **~2 katı** olacak şekilde (oyuncu saniyede ~2 tık eşdeğeri pasif kazanır). Fiyat, hedef geri ödeme süresi
   (başta ~1 dk, sonda ~20 dk) × gelir artışı.
 - Büyük sayılar K / M / B / T biçiminde gösterilir.
+
+## Uygulama durumu
+- **Aşama 1 (çekirdek) kodlandı:** tıklama, kritik (%5, ×5), combo (5 sn'de 20 tık, ×1,15), çekiç/kazma (160 basamak),
+  madenler ve tüccar pazarı (80 basamak), sabit gelir, offline gelir (sunucu saatiyle) ve raporu, yerel kayıt.
+- Değerler `lib/game/balance.dart` içinde. İlerleme telefonda (SharedPreferences) saklanır.
+- Henüz yok: seviye/XP kazanma (savaşla gelecek), birimler, harita, savaş, casusluk, iksirler.

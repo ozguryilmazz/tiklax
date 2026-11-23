@@ -1,9 +1,29 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io' show HttpDate;
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../config.dart';
+
+/// Sunucu saati: Firebase yanıtlarının "Date" başlığından, telefon saatiyle farkı öğrenir.
+/// Offline kazanç gibi süreler telefon saatiyle değil bununla ölçülür (saat oynayarak hile yapılamasın).
+class ServerClock {
+  static int _offsetMs = 0;
+  static bool known = false;
+
+  static int get nowMs => DateTime.now().millisecondsSinceEpoch + _offsetMs;
+
+  static void update(http.Response r) {
+    final d = r.headers['date'];
+    if (d == null) return;
+    try {
+      _offsetMs = HttpDate.parse(d).millisecondsSinceEpoch -
+          DateTime.now().millisecondsSinceEpoch;
+      known = true;
+    } catch (_) {}
+  }
+}
 
 /// Firebase Realtime Database'e REST ile konuşur. Giriş "anonim" yapılır:
 /// her telefon kendine bir uid alır, kurallar bu uid'ye göre çalışır.
@@ -34,6 +54,7 @@ class FirebaseClient {
           body: jsonEncode({'returnSecureToken': true}),
         )
         .timeout(const Duration(seconds: 15));
+    ServerClock.update(r);
     if (r.statusCode != 200) {
       throw Exception('Giriş başarısız (HTTP ${r.statusCode}): ${r.body}');
     }
@@ -50,6 +71,7 @@ class FirebaseClient {
           body: 'grant_type=refresh_token&refresh_token=$_refreshToken',
         )
         .timeout(const Duration(seconds: 15));
+    ServerClock.update(r);
     if (r.statusCode != 200) {
       // Token geçersizse yeniden anonim giriş yap.
       if (r.statusCode == 400) {
@@ -100,6 +122,8 @@ class FirebaseClient {
       req.body = jsonEncode(body);
     }
     final streamed = await _http.send(req).timeout(const Duration(seconds: 10));
-    return http.Response.fromStream(streamed);
+    final res = await http.Response.fromStream(streamed);
+    ServerClock.update(res);
+    return res;
   }
 }

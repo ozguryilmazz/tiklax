@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'config.dart';
+import 'game/game_state.dart';
 import 'screens/shell.dart';
 import 'screens/username_screen.dart';
 import 'services/firebase_client.dart';
@@ -53,6 +54,7 @@ class _BootState extends State<Boot> {
           'Firebase ayarlanmamış. lib/config.dart içine kDbUrl ve kApiKey yaz.');
     }
     await FirebaseClient.init();
+    await GameState.instance.load(); // sunucu saati bilindikten sonra (offline kazanç için)
   }
 
   void _retry() => setState(() => _init = _start());

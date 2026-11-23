@@ -107,8 +107,41 @@ Oyuncu uygulamayı açınca / istediğinde görebileceği kayıtlar:
 | 1 – 2 | Daha çok bina kademesi |
 | 2 ve üstü (örn. 100'e 50) | Çok bina kademesi ve belli askeri birimler |
 
+### Kararlar
+- Casus **yakalanınca kaybolur**, yeniden eğitilmesi gerekir.
+- Saldırı ve casusluk **kısa bir yolculuk süresi** alır.
+
 ### Açık sorular
-- Casus yakalanınca ne olur (kaybolur mu)?
-- Saldırı/casusluk süresi: mesafeye göre yolculuk süresi var mı?
 - Saldırı sıklığı koruması (saldırıdan sonra koruma süresi, günlük sınır).
 - Askeri güç nasıl hesaplanır (saldırı ve savunma birimleri, değerleri): sonra konuşulacak.
+
+## Birimler (taslak; maliyet ve güç değerleri önerilen, ayarlanacak)
+Maliyetler "para" cinsindendir ve tıklama/sabit gelir dengesi kurulunca ölçeklenecek.
+Birim XP değeri = maliyet ÷ 10 (savaşta yok edilen/kaybedilen birim başına XP).
+Askeri güç (casusluk için) = toplam saldırı gücü + toplam savunma gücü.
+
+### Saldırı birimleri
+| Birim | Maliyet | Saldırı gücü | XP |
+|---|---|---|---|
+| Asker | 100 | 10 | 10 |
+| Topçu | 500 | 55 | 50 |
+| Tank | 2.500 | 300 | 250 |
+| Uçak | 15.000 | 2.100 | 1.500 |
+| SİHA | 8.000 | 1.040 | 800 |
+
+### Savunma birimleri
+| Birim | Maliyet | Savunma gücü | XP |
+|---|---|---|---|
+| Nöbetçi | 100 | 10 | 10 |
+| Tank savar | 1.000 | 100 | 100 |
+| Uçak savar | 2.000 | 200 | 200 |
+
+### Karşılıklı etkiler (savunanın savunma çarpanı, saldırı türüne göre)
+| Savunma birimi | Karşı çarpan |
+|---|---|
+| Nöbetçi | Hepsine ×1 |
+| Tank savar | Tanka ×2, diğerlerine ×0,5 |
+| Uçak savar | Uçağa ve SİHA'ya ×2, diğerlerine ×0,5 |
+
+### Casus
+- Maliyet: 300 (öneri). Yakalanınca kaybolur.

@@ -86,7 +86,8 @@ Oyuncu uygulamayı açınca / istediğinde görebileceği kayıtlar:
 
 ### Harita
 - **16 × 16 = 256 kare.**
-- Oyuncular **rastgele** konumlanır; aralarında en az bir mesafe olmalı (**"20 kare" ifadesi netleşecek**, aşağıya bak).
+- Her harita en fazla **12 oyuncu** alır; yeni oyuncu yeri olan bir haritaya yerleştirilir, dolunca yeni harita açılır.
+- Oyuncular **rastgele** konumlanır; aralarında **en az 5 kare** mesafe olur (ilk "20 kare" fikri haritaya sığmıyordu, 5 kareyle ~12 oyuncu sığar).
 - Rakip oyuncular **harita üzerinde** seçilir (konumlarından).
 
 ### Barbar kampları
@@ -102,7 +103,10 @@ Oyuncu uygulamayı açınca / istediğinde görebileceği kayıtlar:
 | 2 yıldız | %20'si | 10 |
 | 3 yıldız | %30'u | 15 |
 
-- Kampların **güç değerleri** ve aynı anda kaç kamp bulunacağı: konuşulmadı.
+- **Kamp gücü (savunma):** kamp doğduğu anda, o haritadaki oyuncuların ortalama saldırı gücü hesaplanır;
+  1 yıldız = ortalamanın **×0,3**'ü, 2 yıldız **×0,6**'sı, 3 yıldız **×1,0**'ı. Doğduktan sonra sabit kalır.
+  Böylece kamplar oyuncularla birlikte büyür.
+- Aynı anda kaç kamp bulunacağı (öneri: 1 yıldızdan 4, 2 yıldızdan 3, 3 yıldızdan 2): konuşulmadı.
 
 ### Savaş
 - Savaş **otomatik** çözülür (saldırı gücü ↔ savunma gücü).
@@ -167,7 +171,8 @@ Askeri güç (casusluk için) = toplam saldırı gücü + toplam savunma gücü.
 - Maliyet: 300 (öneri). Yakalanınca kaybolur.
 
 ## Skor / puan
-- Puan **XP ve paradan** oluşur. Sıralama formülü (ağırlıklar) netleşecek.
+- Puan **XP ve paradan** oluşur: `puan = XP + para ÷ 100` (öneri; ağırlıklar oynadıkça ayarlanır).
+- Skor tablosu bu puana göre sıralanır.
 
 ## İksirler
 - Sonra eklenecek.

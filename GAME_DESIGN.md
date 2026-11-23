@@ -189,3 +189,27 @@ Askeri güç (casusluk için) = toplam saldırı gücü + toplam savunma gücü.
 2. **Birimler ve harita:** birim üretimi, 16×16 harita, oyuncu yerleşimi, barbar kampları ve kamp saldırısı.
 3. **Oyuncu savaşı:** rakibe saldırı, yağma, offline kalkan, raporlar, seviye ve XP, casus ve casusluk.
 4. **Cila:** iksirler, ses, animasyon, skor tablosu ve mesajlaşmanın oyuna bağlanması.
+
+## Denge önerisi (taslak; oynadıkça ayarlanır, değerler `lib/game/balance.dart` içinde olacak)
+
+### Çekiç/kazma (160 basamak, basamak s = 1…160)
+- Malzeme sırası `k = (s-1) ÷ 10` (0…15), malzeme içi kademe `j = (s-1) mod 10` (0…9).
+- Tıklama geliri: `M(s) = 3,5^k × (1 + 0,25 × j)`  (s=1 → 1 para/tık; s=160 → ~470 milyon/tık).
+- Basamak fiyatı: `fiyat(s) = hedef_geri_ödeme(s) × (M(s) − M(s−1))`, `hedef_geri_ödeme(s) = 20 × 1,035^(s−1)` tık
+  (yani basamak başta ~20 tıkta, sonda ~4.800 tıkta kendini öder).
+
+| Basamak | Tıklama geliri | Fiyat |
+|---|---|---|
+| 2 | 1,25 | 5 |
+| 10 | 3,25 | 7 |
+| 20 | 11 | 34 |
+| 40 | 139 | 820 |
+| 80 | 20,9 K | 487 K |
+| 120 | 3,1 M | 290 M |
+| 160 | 471 M | 172 B |
+
+### Binalar (sabit gelir)
+- Madenler ve pazar aynı mantıkla üretilir: bir kademenin saniyelik geliri, aynı "aşamadaki" tıklama gelirinin
+  **~2 katı** olacak şekilde (oyuncu saniyede ~2 tık eşdeğeri pasif kazanır). Fiyat, hedef geri ödeme süresi
+  (başta ~1 dk, sonda ~20 dk) × gelir artışı.
+- Büyük sayılar K / M / B / T biçiminde gösterilir.

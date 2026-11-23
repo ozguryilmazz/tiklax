@@ -84,9 +84,25 @@ Oyuncu uygulamayı açınca / istediğinde görebileceği kayıtlar:
 
 ## Savaş ve harita
 
-### Hedef seçimi
+### Harita
+- **16 × 16 = 256 kare.**
+- Oyuncular **rastgele** konumlanır; aralarında en az bir mesafe olmalı (**"20 kare" ifadesi netleşecek**, aşağıya bak).
 - Rakip oyuncular **harita üzerinde** seçilir (konumlarından).
-- Barbar kampları haritada **rastgele konumlarda** belirir; bulmak için **casus** kullanılır.
+
+### Barbar kampları
+- 3 çeşit: **1, 2 ve 3 yıldızlı**. Haritada aynı anda her çeşitten **birden fazla** bulunabilir
+  (örn. 2 tane 1 yıldızlı, 3 tane 2 yıldızlı).
+- Konumları **rastgele**; bulmak için **casus** kullanılır.
+- Yok edilince **5 dakika sonra** başka rastgele bir yerde yenisi belirir.
+- Ödül (yenince): **para ve XP**.
+
+| Kamp | Para ödülü | XP (şimdilik) |
+|---|---|---|
+| 1 yıldız | Oyuncunun toplam bakiyesinin %10'u | 5 |
+| 2 yıldız | %20'si | 10 |
+| 3 yıldız | %30'u | 15 |
+
+- Kampların **güç değerleri** ve aynı anda kaç kamp bulunacağı: konuşulmadı.
 
 ### Savaş
 - Savaş **otomatik** çözülür (saldırı gücü ↔ savunma gücü).
@@ -149,3 +165,9 @@ Askeri güç (casusluk için) = toplam saldırı gücü + toplam savunma gücü.
 
 ### Casus
 - Maliyet: 300 (öneri). Yakalanınca kaybolur.
+
+## Skor / puan
+- Puan **XP ve paradan** oluşur. Sıralama formülü (ağırlıklar) netleşecek.
+
+## İksirler
+- Sonra eklenecek.

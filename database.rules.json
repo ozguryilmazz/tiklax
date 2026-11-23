@@ -1,0 +1,42 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "usernames": {
+      ".read": true,
+      "$name": {
+        ".validate": "$name.matches(/^[a-z0-9_]{3,16}$/) && newData.isString()",
+        ".write": "auth != null && ((!data.exists() && newData.val() === auth.uid) || (data.val() === auth.uid && !newData.exists()))"
+      }
+    },
+
+    "players": {
+      ".read": "auth != null",
+      ".indexOn": ["score"],
+      "$uid": {
+        ".write": "auth != null && auth.uid === $uid",
+        ".validate": "newData.hasChildren(['name', 'score', 'updatedAt']) && root.child('usernames').child(newData.child('name').val()).val() === auth.uid",
+        "name": { ".validate": "newData.isString()" },
+        "score": { ".validate": "newData.isNumber() && newData.val() >= 0" },
+        "updatedAt": { ".validate": "newData.isNumber()" },
+        "$other": { ".validate": false }
+      }
+    },
+
+    "inbox": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        "$mid": {
+          ".write": "auth != null && ((!data.exists() && newData.child('from').val() === auth.uid) || (auth.uid === $uid && !newData.exists()))",
+          ".validate": "newData.hasChildren(['from', 'fromName', 'text', 'ts']) && newData.child('text').isString() && newData.child('text').val().length >= 1 && newData.child('text').val().length <= 500 && root.child('usernames').child(newData.child('fromName').val()).val() === auth.uid",
+          "from": { ".validate": "newData.isString()" },
+          "fromName": { ".validate": "newData.isString()" },
+          "text": { ".validate": "newData.isString()" },
+          "ts": { ".validate": "newData.isNumber()" },
+          "$other": { ".validate": false }
+        }
+      }
+    }
+  }
+}

@@ -53,13 +53,33 @@ Binalar para ile yükseltilir, her kademe saniyelik geliri artırır. Binalar:
 4. Elmas madeni
 5. Tüccar pazarı
 
-Kademe sayısı: her bina 10 kademe; **tüccar pazarı için "40 kademe" yazıldı, netleşecek**
-(tüccar pazarı 40 kademe mi, yoksa dört madenin toplamı mı 40).
+Kademe sayısı: taş, altın, zümrüt ve elmas madenleri **10'ar kademe**, tüccar pazarı **40 kademe**
+(toplam 40 + 40 = 80 basamak).
+
 Kilit açma:
-- Binalar baştan kapalıdır.
-- Madenler sırayla açılır: taş madeni 10 kademeyi bitirince altın madeni açılır, altın bitince zümrüt, zümrüt bitince elmas.
-- **Tüccar pazarı** bu zincirin dışındadır: baştan açılabilir. Madenler gibi para getirir.
-- Taş madeninin kendisinin nasıl açıldığı (baştan açık mı, satın alınarak mı): netleşecek.
-Fiyat/gelir değerleri: konuşulmadı.
-## Offline gelir — fikirler konuşuldu, karar bekliyor
+- Madenler ve tüccar pazarı **baştan kapalıdır**; oyuncu **parayla açar**.
+- Madenler sırayla ilerler: elmas madenine gelene kadar öncekilerin kademeleri tamamlanır
+  (taş 10 kademe → altın açılır → zümrüt → elmas).
+- **Tüccar pazarı** ayrı bir bölümdür, madenlerden bağımsız başlayabilir. Madenler gibi para getirir.
+- Taş madeninin açılış fiyatı ve fiyat/gelir değerleri: konuşulmadı.
+
+## Offline gelir
+Sadece **sabit (saniyelik) gelir** offline kazanılır; kazanç süreye göre azalır:
+
+| Offline süre | Verim |
+|---|---|
+| İlk 2 saat | %100 |
+| Sonraki 2 saat (2–4. saat) | %50 |
+| Sonraki 2 saat (4–6. saat) | %25 |
+| 6. saatten sonra | %0 |
+
+Toplam: en fazla 2×1 + 2×0,5 + 2×0,25 = **3,5 saatlik tam gelire** denk gelir.
+Süre sunucu zamanıyla ölçülür (telefon saatiyle hile yapılmasın).
+
+## Raporlar bölümü
+Oyuncu uygulamayı açınca / istediğinde görebileceği kayıtlar:
+- **Saldırı raporu:** Oyuncu saldırı aldıysa savaş sonuç bilgileri.
+- **Casusluk raporu:** Casusluk yapıldıysa (veya yapıldığında) elde edilen bilgiler.
+- **Offline kazanç raporu:** Offline sürede ne kadar kazanıldığı.
+
 ## Savaş ve harita — henüz konuşulmadı

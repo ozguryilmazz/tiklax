@@ -23,8 +23,18 @@ class ReportsScreen extends StatelessWidget {
                     '${d.day.toString().padLeft(2, '0')}.${d.month.toString().padLeft(2, '0')} '
                     '${d.hour.toString().padLeft(2, '0')}:${d.minute.toString().padLeft(2, '0')}';
                 return ListTile(
-                  leading: const Icon(Icons.nights_stay),
-                  title: Text(r.type == 'offline' ? 'Offline kazanç' : r.type),
+                  leading: Icon(r.type == 'camp'
+                      ? Icons.local_fire_department
+                      : r.type == 'level'
+                          ? Icons.star
+                          : Icons.nights_stay),
+                  title: Text(r.type == 'offline'
+                      ? 'Offline kazanç'
+                      : r.type == 'camp'
+                          ? 'Kamp savaşı'
+                          : r.type == 'level'
+                              ? 'Seviye'
+                              : r.type),
                   subtitle: Text('$when\n${r.text}'),
                   isThreeLine: true,
                   trailing: r.amount > 0

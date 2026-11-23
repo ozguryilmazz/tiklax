@@ -215,7 +215,16 @@ Askeri güç (casusluk için) = toplam saldırı gücü + toplam savunma gücü.
 - Büyük sayılar K / M / B / T biçiminde gösterilir.
 
 ## Uygulama durumu
-- **Aşama 1 (çekirdek) kodlandı:** tıklama, kritik (%5, ×5), combo (5 sn'de 20 tık, ×1,15), çekiç/kazma (160 basamak),
-  madenler ve tüccar pazarı (80 basamak), sabit gelir, offline gelir (sunucu saatiyle) ve raporu, yerel kayıt.
+- **Aşama 1 (çekirdek):** tıklama, kritik, combo, çekiç/kazma, madenler ve pazar, sabit gelir, offline gelir, yerel kayıt.
+- **Aşama 2 (kodlandı):** birim üretimi, seviye/XP (50 seviye), 16×16 harita, oyuncu yerleşimi (12 oyuncu/harita, en az 5 kare),
+  barbar kampları (4/3/2 adet, 5 dk'da yenilenir), casusla kamp arama, kamp saldırısı, kamp raporları.
 - Değerler `lib/game/balance.dart` içinde. İlerleme telefonda (SharedPreferences) saklanır.
-- Henüz yok: seviye/XP kazanma (savaşla gelecek), birimler, harita, savaş, casusluk, iksirler.
+- Henüz yok: oyuncuya saldırı, yağma, offline kalkan, oyuncular arası casusluk, iksirler.
+
+### Aşama 2'de verilen kararlar (öneri; değiştirilebilir)
+- Birim fiyatı, elde o birimden ne kadar çok varsa o kadar artar (her birimde %0,5). Sınır yok ama ekonomi dengelenir.
+- Kamp saldırısına **tüm saldırı birimleri** gider; aynı anda **tek sefer**. Yolculuk: 5 sn + mesafe başına 2 sn.
+- Savaş: şans çarpanı 0,9–1,1. Kazanınca kayıp %30'a kadar (güç farkı büyüdükçe azalır), kaybedince %50–90.
+- XP: kamp XP'si (5/10/15) + kaybedilen birim başına yarım birim XP'si. Kamp gücü o haritadaki oyuncuların ortalama saldırı gücüne göre.
+- Casus kamp ararken %20 ihtimalle yakalanıp kaybolur; yoksa gizli bir kampı görünür yapar.
+- Kamp gücü ve oyuncu güçleri telefonlar tarafından yazılır (sunucu kodu yok); hile riski şimdilik kabul edildi.

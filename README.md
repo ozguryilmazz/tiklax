@@ -12,6 +12,7 @@ oyundaki "Güncellemeyi kontrol et" butonu en son release'i okuyup APK'yı indir
    - Realtime Database oluştur (konum: Avrupa).
    - Authentication > Sign-in method > **Anonymous** açık olsun.
    - Realtime Database > Rules sekmesine `database.rules.json` içeriğini yapıştırıp yayınla.
+     **Kurallar her güncellemede değişebilir: yeni bir aşama eklenince tekrar yapıştırıp yayınla** (harita için `maps` kuralları Aşama 2'de eklendi).
    - `lib/config.dart` içindeki `kDbUrl` ve `kApiKey` değerlerini doldur
      (API anahtarı: Project settings > General > Web API Key).
 

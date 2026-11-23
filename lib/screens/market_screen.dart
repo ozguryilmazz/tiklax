@@ -3,10 +3,29 @@ import 'package:flutter/material.dart';
 import '../game/balance.dart';
 import '../game/game_state.dart';
 import '../utils/format.dart';
+import 'army_screen.dart';
 
-/// Eşya (çekiç/kazma) ve bina (maden, pazar) yükseltmeleri.
+/// Market: "Gelir" (eşya ve binalar) ve "Ordu" (birimler) sekmeleri.
 class MarketScreen extends StatelessWidget {
   const MarketScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const DefaultTabController(
+      length: 2,
+      child: Column(
+        children: [
+          TabBar(tabs: [Tab(text: 'Gelir'), Tab(text: 'Ordu')]),
+          Expanded(child: TabBarView(children: [IncomeTab(), ArmyScreen()])),
+        ],
+      ),
+    );
+  }
+}
+
+/// Eşya (çekiç/kazma) ve bina (maden, pazar) yükseltmeleri.
+class IncomeTab extends StatelessWidget {
+  const IncomeTab({super.key});
 
   @override
   Widget build(BuildContext context) {

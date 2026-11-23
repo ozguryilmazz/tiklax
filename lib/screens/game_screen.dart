@@ -21,6 +21,11 @@ class GameScreen extends StatelessWidget {
             children: [
               Text('${Session.username}   •   Puan ${fmtNum(gs.score.toDouble())}',
                   style: const TextStyle(fontSize: 14, color: Colors.white70)),
+              Text(
+                  gs.playerLevel >= kMaxLevel
+                      ? 'Seviye ${gs.playerLevel} (en yüksek)'
+                      : 'Seviye ${gs.playerLevel}   •   XP ${fmtNum(gs.xp)} / ${fmtNum(xpTotalForLevel(gs.playerLevel + 1))}',
+                  style: const TextStyle(fontSize: 14, color: Colors.white70)),
               const SizedBox(height: 12),
               Text(fmtNum(gs.money),
                   style: const TextStyle(fontSize: 52, fontWeight: FontWeight.bold)),

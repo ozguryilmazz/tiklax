@@ -216,7 +216,7 @@ Askeri güç (casusluk için) = toplam saldırı gücü + toplam savunma gücü.
 
 ## Uygulama durumu
 - **Aşama 1 (çekirdek):** tıklama, kritik, combo, çekiç/kazma, madenler ve pazar, sabit gelir, offline gelir, yerel kayıt.
-- **Aşama 2 (kodlandı):** birim üretimi, seviye/XP (50 seviye), 16×16 harita, oyuncu yerleşimi (12 oyuncu/harita, en az 5 kare),
+- **Aşama 2 (build 5-6, test edildi: harita açılıyor):** birim üretimi, seviye/XP (50 seviye), 16×16 harita, oyuncu yerleşimi (12 oyuncu/harita, en az 5 kare),
   barbar kampları (4/3/2 adet, 5 dk'da yenilenir), casusla kamp arama, kamp saldırısı, kamp raporları.
 - Değerler `lib/game/balance.dart` içinde. İlerleme telefonda (SharedPreferences) saklanır.
 - Henüz yok: oyuncuya saldırı, yağma, offline kalkan, oyuncular arası casusluk, iksirler.
@@ -225,6 +225,18 @@ Askeri güç (casusluk için) = toplam saldırı gücü + toplam savunma gücü.
 - Birim fiyatı, elde o birimden ne kadar çok varsa o kadar artar (her birimde %0,5). Sınır yok ama ekonomi dengelenir.
 - Kamp saldırısına **tüm saldırı birimleri** gider; aynı anda **tek sefer**. Yolculuk: 5 sn + mesafe başına 2 sn.
 - Savaş: şans çarpanı 0,9–1,1. Kazanınca kayıp %30'a kadar (güç farkı büyüdükçe azalır), kaybedince %50–90.
-- XP: kamp XP'si (5/10/15) + kaybedilen birim başına yarım birim XP'si. Kamp gücü o haritadaki oyuncuların ortalama saldırı gücüne göre.
+- XP: kamp XP'si (5/10/15) + kaybedilen birim başına yarım birim XP'si. Yenilgide de kayıp birim XP'sine ek olarak yıldız sayısı kadar (1/2/3) teselli XP'si verilir. Kamp gücü o haritadaki oyuncuların ortalama saldırı gücüne göre.
 - Casus kamp ararken %20 ihtimalle yakalanıp kaybolur; yoksa gizli bir kampı görünür yapar.
 - Kamp gücü ve oyuncu güçleri telefonlar tarafından yazılır (sunucu kodu yok); hile riski şimdilik kabul edildi.
+
+### 23 Kasım güncellemesi
+- Harita 401 hatası: Firebase kuralları yayınlanmamıştı; yayınlanınca çözüldü. Kural değişen her aşamada `database.rules.json` yeniden yayınlanmalı.
+- Savaş bitince hangi sekmede olursa olsun "Savaş raporu" penceresi açılır (güç, kamp gücü, kayıp, XP, para). Raporlar ayrıca Ayarlar > Raporlar'da durur.
+- Seferdeki ordu da Harita'daki saldırı gücüne dahil gösterilir ("ordu seferde").
+- Görseller sonraya bırakıldı.
+
+### Sıradaki işler
+1. Aşama 2 testinin sonuçlarına göre hata düzeltme ve denge ayarı (kamp XP'si birim XP'sine göre düşük, birim maliyetleri geç oyun gelirine göre).
+2. Aşama 3: oyuncuya saldırı, %20 yağma, offline oyuncuya %20-30 rastgele kalkan, saldırı ve casusluk raporları, oyuncular arası casusluk (güç oranına göre başarı).
+3. Aşama 4: iksirler (savaş ganimeti), ses, animasyon, görseller.
+4. İleride: Cloud Functions'a geçiş, hesap kurtarma için e-posta girişi, Harita sekmesinden Raporlar kısayolu.

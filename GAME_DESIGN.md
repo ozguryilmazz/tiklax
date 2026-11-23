@@ -35,7 +35,7 @@ beliren barbar kamplarına saldır → XP ve puan topla.
 
 ### Kritik
 - Belirli ihtimalle o anki tıklama gelirinin **5 katı**. **Yükseltmeyle artmaz** (sabit).
-- Sabit ihtimal değeri: belirlenecek.
+- İhtimal: **%5**.
 
 ### Combo
 - **5 saniye içinde 20 tıklama** yapılınca combo tetiklenir; tıklama geliri **×1,15**.
@@ -55,6 +55,11 @@ Binalar para ile yükseltilir, her kademe saniyelik geliri artırır. Binalar:
 
 Kademe sayısı: her bina 10 kademe; **tüccar pazarı için "40 kademe" yazıldı, netleşecek**
 (tüccar pazarı 40 kademe mi, yoksa dört madenin toplamı mı 40).
-Binaların kilit açma sırası ve fiyat/gelir değerleri: konuşulmadı.
+Kilit açma:
+- Binalar baştan kapalıdır.
+- Madenler sırayla açılır: taş madeni 10 kademeyi bitirince altın madeni açılır, altın bitince zümrüt, zümrüt bitince elmas.
+- **Tüccar pazarı** bu zincirin dışındadır: baştan açılabilir. Madenler gibi para getirir.
+- Taş madeninin kendisinin nasıl açıldığı (baştan açık mı, satın alınarak mı): netleşecek.
+Fiyat/gelir değerleri: konuşulmadı.
 ## Offline gelir — fikirler konuşuldu, karar bekliyor
 ## Savaş ve harita — henüz konuşulmadı

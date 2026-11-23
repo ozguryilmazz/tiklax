@@ -115,6 +115,10 @@ Oyuncu uygulamayı açınca / istediğinde görebileceği kayıtlar:
 - Saldırı sıklığı koruması (saldırıdan sonra koruma süresi, günlük sınır).
 - Askeri güç nasıl hesaplanır (saldırı ve savunma birimleri, değerleri): sonra konuşulacak.
 
+## Birim üretimi
+- Üretim **anında** olur (bekleme süresi yok).
+- Birim sayısı için **sınır yok**; tek kısıt paradır.
+
 ## Birimler (taslak; maliyet ve güç değerleri önerilen, ayarlanacak)
 Maliyetler "para" cinsindendir ve tıklama/sabit gelir dengesi kurulunca ölçeklenecek.
 Birim XP değeri = maliyet ÷ 10 (savaşta yok edilen/kaybedilen birim başına XP).

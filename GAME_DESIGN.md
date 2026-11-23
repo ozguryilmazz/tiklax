@@ -176,3 +176,16 @@ Askeri güç (casusluk için) = toplam saldırı gücü + toplam savunma gücü.
 
 ## İksirler
 - Sonra eklenecek.
+
+## Mimari karar
+- İlk sürümde oyun hesapları (gelir, savaş, kamp doğurma) **telefonda** yapılır; Firebase veri taşır.
+  Oyuncular çocuk, hile riski şimdilik kabul edildi. Daha sonra **Cloud Functions**'a (Blaze planı) geçilecek.
+- Geçişi kolaylaştırmak için oyun kuralları (gelir, savaş, XP formülleri) arayüzden ayrı, saf Dart
+  dosyalarında (`lib/game/`) tutulur.
+
+## Yol haritası
+1. **Çekirdek:** tıklama, kritik, combo, çekiç/kazma (160 basamak), madenler ve tüccar pazarı (80 basamak),
+   sabit gelir, offline gelir ve raporu, ilerlemenin kaydı (telefon + Firebase yedeği).
+2. **Birimler ve harita:** birim üretimi, 16×16 harita, oyuncu yerleşimi, barbar kampları ve kamp saldırısı.
+3. **Oyuncu savaşı:** rakibe saldırı, yağma, offline kalkan, raporlar, seviye ve XP, casus ve casusluk.
+4. **Cila:** iksirler, ses, animasyon, skor tablosu ve mesajlaşmanın oyuna bağlanması.

@@ -82,4 +82,33 @@ Oyuncu uygulamayı açınca / istediğinde görebileceği kayıtlar:
 - **Casusluk raporu:** Casusluk yapıldıysa (veya yapıldığında) elde edilen bilgiler.
 - **Offline kazanç raporu:** Offline sürede ne kadar kazanıldığı.
 
-## Savaş ve harita — henüz konuşulmadı
+## Savaş ve harita
+
+### Hedef seçimi
+- Rakip oyuncular **harita üzerinde** seçilir (konumlarından).
+- Barbar kampları haritada **rastgele konumlarda** belirir; bulmak için **casus** kullanılır.
+
+### Savaş
+- Savaş **otomatik** çözülür (saldırı gücü ↔ savunma gücü).
+- Oyuncu **offline** ise saldırıya karşı savunma gücüne **%20–30 arası rastgele koruma kalkanı** eklenir.
+- **Yağma:** Kazanan, kaybedenin parasının **%20'sini** alır ve **XP** kazanır.
+- Savaş sonucu iki tarafın raporuna da düşer.
+
+### Casusluk
+- **Casus birimi eğitilir.**
+- Casus iki iş yapar: haritada **barbar kampı arar**, ve **düşman üssüne gidip askeri bilgi çalar**.
+- Başarı, casusluk yapanın askeri gücünün rakibin askeri gücüne **oranına** göre belirlenir.
+- Taslak eşikler (oran = kendi güç / rakip güç; sonra ayarlanacak):
+
+| Oran | Sonuç |
+|---|---|
+| 0,25'ten küçük (örn. 100'e 1000) | Başarısız |
+| 0,25 – 1 (örn. 100'e 200) | Sadece belli bina kademeleri |
+| 1 – 2 | Daha çok bina kademesi |
+| 2 ve üstü (örn. 100'e 50) | Çok bina kademesi ve belli askeri birimler |
+
+### Açık sorular
+- Casus yakalanınca ne olur (kaybolur mu)?
+- Saldırı/casusluk süresi: mesafeye göre yolculuk süresi var mı?
+- Saldırı sıklığı koruması (saldırıdan sonra koruma süresi, günlük sınır).
+- Askeri güç nasıl hesaplanır (saldırı ve savunma birimleri, değerleri): sonra konuşulacak.

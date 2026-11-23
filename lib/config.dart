@@ -1,9 +1,9 @@
 /// Firebase Console > Realtime Database sayfasındaki adres (sonunda "/" olmasın).
 /// Örnek: 'https://basbas-xxxxx-default-rtdb.europe-west1.firebasedatabase.app'
-const String kDbUrl = 'BURAYA_DB_URL';
+const String kDbUrl = 'https://basbas-6cccd-default-rtdb.europe-west1.firebasedatabase.app';
 
 /// Firebase Console > Project settings > General > "Web API Key".
-const String kApiKey = 'BURAYA_API_KEY';
+const String kApiKey = 'AIzaSyDx0i2gPYSDtQAx6DakHsTGSsev_KJAmgM';
 
 /// Güncellemelerin indirildiği GitHub deposu (Releases).
 const String kGithubRepo = 'ozguryilmazz/tiklax';

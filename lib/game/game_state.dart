@@ -76,6 +76,7 @@ class GameState extends ChangeNotifier {
 
   /// Seviye atlanınca ekran bir kez gösterir.
   int? pendingLevelUp;
+  GameReport? pendingBattle; // savaş sonrası gösterilecek rapor
 
   // Anlık durum
   double lastGain = 0;
@@ -103,6 +104,10 @@ class GameState extends ChangeNotifier {
   int get score => min(xp + money / 100, 9e15).floor();
 
   double get atkPower => _power(units, (u) => u.atk);
+
+  /// Seferdeki ordunun saldırı gücü.
+  double get expeditionAtk =>
+      expeditions.fold(0.0, (a, e) => a + _power(e.units, (u) => u.atk));
   double get defPower => _power(units, (u) => u.def);
 
   static double _power(Map<String, int> m, double Function(UnitDef) f) {
@@ -388,19 +393,25 @@ class GameState extends ChangeNotifier {
       final gainedXp = kCampXp[e.stars]! + lostXp;
       awardXp(gainedXp);
       knownCamps.remove(e.campId);
-      _addReport(GameReport(
+      final rep = GameReport(
           'camp',
-          '${e.stars} yıldızlı kampı yok ettin. $lostCount birim kaybettin. '
-          '+${fmtNum(gainedXp)} XP.',
+          '${e.stars} yıldızlı kampı yok ettin. Saldırı gücün ${fmtNum(atk)}, kamp gücü ${fmtNum(fetch.camp.power)}. '
+          '$lostCount birim kaybettin. +${fmtNum(gainedXp)} XP, +${fmtNum(loot)} para.',
           now,
-          amount: loot));
+          amount: loot);
+      _addReport(rep);
+      pendingBattle = rep;
     } else {
-      awardXp(lostXp);
-      _addReport(GameReport(
+      // Yenilgide de küçük bir teselli XP'si verilir (1/2/3).
+      final gainedXp = lostXp + e.stars;
+      awardXp(gainedXp);
+      final rep = GameReport(
           'camp',
-          '${e.stars} yıldızlı kampa yenildin. $lostCount birim kaybettin. '
-          '+${fmtNum(lostXp)} XP.',
-          now));
+          '${e.stars} yıldızlı kampa yenildin. Saldırı gücün ${fmtNum(atk)}, kamp gücü ${fmtNum(fetch.camp.power)}. '
+          '$lostCount birim kaybettin. +${fmtNum(gainedXp)} XP.',
+          now);
+      _addReport(rep);
+      pendingBattle = rep;
     }
     await save();
     notifyListeners();

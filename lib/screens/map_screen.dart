@@ -188,7 +188,8 @@ class _MapScreenState extends State<MapScreen> {
 
     Widget body;
     if (isMe) {
-      body = Text('Senin üssün (${_selX},${_selY}).\nSaldırı gücün: ${fmtNum(_gs.atkPower)}   '
+      body = Text('Senin üssün (${_selX},${_selY}).\nSaldırı gücün: ${fmtNum(_gs.atkPower + _gs.expeditionAtk)}'
+          '${_gs.expeditions.isNotEmpty ? ' (ordu seferde)' : ''}   '
           'Savunma gücün: ${fmtNum(_gs.defPower)}');
     } else if (players.isNotEmpty) {
       final p = players.first;
@@ -201,7 +202,7 @@ class _MapScreenState extends State<MapScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('${c.stars} yıldızlı barbar kampı   (${c.x},${c.y})\n'
-              'Kamp gücü: ${fmtNum(c.power)}   •   Senin saldırı gücün: ${fmtNum(_gs.atkPower)}\n'
+              'Kamp gücü: ${fmtNum(c.power)}   •   Senin saldırı gücün: ${fmtNum(_gs.atkPower + _gs.expeditionAtk)}\n'
               'Mesafe: ${dist.toStringAsFixed(1)} kare   •   Yolculuk: ~${travelSeconds(dist).round()} sn\n'
               'Ödül: bakiyenin %${(kCampLootPercent[c.stars]! * 100).round()}\'i + ${kCampXp[c.stars]!.round()} XP'),
           const SizedBox(height: 8),

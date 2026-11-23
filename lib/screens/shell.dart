@@ -40,11 +40,27 @@ class _ShellState extends State<Shell> with WidgetsBindingObserver {
   }
 
   void _onGameChanged() {
+    if (!mounted) return;
     final lvl = _gs.pendingLevelUp;
-    if (lvl == null || !mounted) return;
-    _gs.pendingLevelUp = null;
-    ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Seviye atladın! Yeni seviye: $lvl')));
+    if (lvl != null) {
+      _gs.pendingLevelUp = null;
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Seviye atladın! Yeni seviye: $lvl')));
+    }
+    final b = _gs.pendingBattle;
+    if (b != null) {
+      _gs.pendingBattle = null;
+      showDialog<void>(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text('Savaş raporu'),
+          content: Text(b.text),
+          actions: [
+            FilledButton(onPressed: () => Navigator.pop(ctx), child: const Text('Tamam')),
+          ],
+        ),
+      );
+    }
   }
 
   Future<void> _showOffline() async {
